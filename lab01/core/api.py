@@ -3,9 +3,14 @@ from typing import Any, Dict, TypedDict
 
 ROUTER_BASE: str = "https://router.huggingface.co/hf-inference/models/"
 
+class Response(TypedDict, total=False):
+    error: bool
+    message: str
+    status_code: int
+    raw: Any
 
 
-def query_model(model_id: str, text: str, hf_token: str):
+def query_model(model_id: str, text: str, hf_token: str) -> Response:
     """
     Отправляет текст в модель Hugging Face и возвращает ответ.
 
