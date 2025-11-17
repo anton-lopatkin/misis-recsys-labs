@@ -1,11 +1,10 @@
-from typing import Optional, Any, Dict
 from core.config import get_hf_token
 from core.models import MODELS
 from core.api import query_model
 from ui.components import model_selector, text_input_box, show_result
 
 import streamlit as st
-
+from typing import Optional, Any, Dict
 
 st.set_page_config(
     page_title="Text Sentiment Analysis",

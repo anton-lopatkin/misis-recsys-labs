@@ -3,6 +3,16 @@ from typing import List, Dict, Any, Optional
 
 
 def model_selector(models: List[str]) -> str:
+    """
+    Выбирает модель из списка с помощью виджета pills.
+
+    Args:
+        models (List[str]): Список доступных моделей.
+
+    Returns:
+        str: Выбранная модель.
+    """
+
     choice: str = st.pills(
         "Choose model",
         options=models,
@@ -13,6 +23,13 @@ def model_selector(models: List[str]) -> str:
 
 
 def text_input_box() -> str:
+    """
+    Создает текстовое поле для ввода текста.
+
+    Returns:
+        Optional[str]: Введенный текст или None, если поле пустое.
+    """
+
     text: str = st.text_input(
         "Text to analyze",
         placeholder="Enter your sentence here..."
@@ -21,6 +38,13 @@ def text_input_box() -> str:
 
 
 def show_result(result: Dict[str, Any]) -> None:
+    """
+    Отображает результат анализа/классификации текста.
+
+    Args:
+        result (dict): Ответ модели.
+    """
+
     error: Optional[bool] = result.get('error')
     if error:
         message: str = result.get('message', 'Unknown error')

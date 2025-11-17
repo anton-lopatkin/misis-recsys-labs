@@ -1,11 +1,23 @@
 import requests
-from typing import Dict, Any
-
+from typing import Any, Dict, TypedDict
 
 ROUTER_BASE: str = "https://router.huggingface.co/hf-inference/models/"
 
 
-def query_model(model_id: str, text: str, hf_token: str) -> Dict[str, Any]:
+
+def query_model(model_id: str, text: str, hf_token: str):
+    """
+    Отправляет текст в модель Hugging Face и возвращает ответ.
+
+    Args:
+        model_id (str): Идентификатор модели Hugging Face.
+        text (str): Входной текст для анализа.
+        hf_token (str): Токен Hugging Face.
+
+    Returns:
+        ModelResponse: Результат запроса с полями 'error', 'message', 'status_code', 'raw'.
+    """
+
     url: str = ROUTER_BASE + model_id
     headers: Dict[str, str] = {"Authorization": f"Bearer {hf_token}"}
     payload: Dict[str, str] = {"inputs": text}
